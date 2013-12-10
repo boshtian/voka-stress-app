@@ -1,0 +1,184 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+<title>Stress app</title>
+<link rel="stylesheet" href="css/style.css" />
+<!--<script src="cordova.js"></script>-->
+<script src="scripts/jquery.min.js"></script>
+<script src="scripts/buzz.js"></script>
+<script src="scripts/jquery.knob.js"></script>
+<script src="scripts/jquery-ui.min.js"></script>
+<!--<script src="scripts/jquery.mobile-1.1.1.min.js"></script>-->
+<script src="scripts/cdv-plugin-fb-connect.js"></script>
+<script src="scripts/facebook-js-sdk.js"></script>
+<script type="text/javascript" charset="utf-8">
+	
+	// event listeners
+	//document.addEventListener("deviceready", onDeviceReady, false);
+	
+	$(document).ready(function(e) {
+    onDeviceReady();
+  });
+		
+	function onDeviceReady() {
+		//document.addEventListener("online", onOnline, false);
+		document.addEventListener("resume", onResume, false);
+		
+		document.addEventListener("backbutton", function(e){
+		}, false);
+		/*
+		try {
+			FB.init({ appId: "530146413715624", nativeInterface: CDV.FB, useCachedDialogs: false });
+		} catch (e) {
+			alert(e);
+		}
+		*/
+		
+		$('.stress-slider').height($('.stress-slider').width() / 2);
+		$('.sound-slider').height($('.sound-slider').width() / 2);
+		
+		var sliderWidth = $('.stress-slider').width();
+		
+		$('.stress-dial').slider();
+		
+		
+/*		
+		var stressDial = $(".stress-dial").knob({
+			'angleOffset': -75,
+			'angleArc': 150,
+			'width': sliderWidth-60,
+			'height': 260,
+			'thickness': .1,
+			'cursor': true,
+			'change': function(v){
+				console.log(v);
+			}
+		});
+		
+		var soundDial = $(".sound-dial").knob({
+			'angleOffset': 105,
+			'angleArc': 150,
+			'width': sliderWidth-60,
+			'height': 260,
+			'thickness': .1,
+			'change': function(v){
+				console.log(v);
+			}
+		});
+*/		
+		var buttonWidth = $('.action-button').width();
+		$('.action-button').css('height', buttonWidth+'px').css('line-height', buttonWidth+'px').css("top", (buttonWidth/0.7)*(-1));;
+		
+		/* MUSIC */
+		var timerInterval;
+		var appMusic = new buzz.sound( "music/stress_app_music", {
+				formats: [ "ogg", "mp3" ],
+				preload: true,
+				autoplay: false,
+				loop: false
+		});
+		
+		appMusic.bind('ended', function(e){
+			showSharing();
+		});
+		
+		appMusic.setTime(500);
+		
+		$(".action-button").on('click', function(){
+			console.log(buzz.toTimer( appMusic.getTime() ));
+			if (appMusic.isPaused()){
+				appMusic.play().fadeIn(250);
+				timerInterval = setInterval(function(){ updateTimer(appMusic); }, 1000);
+				$(this).text("STOP").addClass("playing");
+			}
+			else{
+				appMusic.fadeOut(250, function(){
+					appMusic.pause();
+					clearInterval(timerInterval);
+				})
+				$(this).text("START").removeClass("playing");
+			}
+		});
+	}
+	
+	function updateTimer(appMusic) {
+		var m, s;
+		time = appMusic.getTime();
+		
+		m = Math.floor(time / 60);
+		m = isNaN(m) ? "--" : m >= 10 ? m : "0" + m;
+		s = Math.floor(time % 60);
+		s = isNaN(s) ? "--" : s >= 10 ? s : "0" + s;
+		
+		$("span.min").text(m);
+		$("span.sec").text(s);
+	}
+	
+	function showSharing(){
+		alert("show sharing");
+	}
+	
+	function onOnline(){
+	}
+	
+	function onResume(){
+	}
+	/*
+	// on mobileinit
+	$(document).on("mobileinit", function() {
+		$.mobile.buttonMarkup.hoverDelay = 25;
+		$.mobile.defaultPageTransition = 'none';
+		$.mobile.defaultDialogTransition = 'none';
+	  $.mobile.useFastClick = false;
+	});
+	
+	function facebookPostToWall(event) {
+		var params = {
+				method: 'feed',
+				name: 'Tap Water Ljubljana',
+				link: 'https://play.google.com/store/apps/details?id=si.enki.tapwaterljubljana',
+				picture: arr_images[event.data.mid],
+				caption: 'Tap Water Ljubljana',
+				description: 'Thirsty in Ljubljana? Install this app and find yourself a free drinking water fountain.'
+			};
+		FB.ui(params, function(obj) {
+			//console.log(obj);
+		});
+	}
+*/	
+</script>
+
+</head> 
+<body> 
+<div data-role="page" id="app-wrapper">
+  <div data-role="content" id="app-content" style="padding:0;">
+  	<h2 class="stress-state">Non stressed</h2>
+    <div class="circle-slider">
+    	<div class="stress-slider"><div class="stress-dial"></div></div>
+      <div class="sound-slider"><div class="sound-dial"></div></div>
+      <div class="action-button">START</div>
+    </div>
+    <div class="timer">
+    	<div class="title">DURATION</div>
+      <div class="time"><span class="min">00</span>M <span class="sec">00</span>S</div>
+    </div>
+    <a data-role="button" class="info-button">INFO</a>
+  </div>
+  
+  <div data-role="finished" id="app-finished" style="padding:0;">
+  	<h2>Feeling relaxed?</h2>
+    <a data-role="button" class="btn-again"><span>Need one more time</span></a>
+    <a data-role="button" class="btn-better"><span>I'm better now</span></a>
+  </div>
+  
+  <div data-role="share" id="app-share" style="padding:0;">
+  	<h2>I'm better now</h2>
+    
+  </div>
+</div>
+
+
+
+</body>
+</html>
