@@ -18,46 +18,52 @@ body {
 
 #app-wrapper{
 	width:100%;
-	height:100%;
 	position:relative;
 	overflow:hidden;
 	#app-content{
 	}
 	#app-finished{
-
+		display:none;
 		width:100%;
 		height:100%;
 		position:relative;
 		background:rgba(255, 255, 255, 0.9);
+		.btn-again-wrap{
+			position:absolute;
+			top:35%;
+			width:100%;
+		}
+		.btn-better-wrap{
+			position:absolute;
+			top:60%;
+			width:100%;
+		}
 		a{
 			width:80%;
 			padding:12px 20px;
 			position:absolute;
-			color:#fff;
-			font-size:3em;
-			margin:0 auto;
+			font-size:2.4em;
+			margin:0 10%;
+			.border-box;
 			.border-radius(5px);
 			text-align:center;
+			position:absolute;
+			display:block;
+			.animate(0.2);
 			&.btn-again{
 				.blue-btn;
-				.box-shadow(3px, 3px, 0, #2495bc);
-				text-shadow: -1px -1px 0 #006a99;
-				top:40%;
+				top:0;
 				&:active{
-					margin-top:2px;
-					margin-left:2px;
-					.box-shadow(1px, 1px, 0, #2495bc);
+					top: 2px;
+					left: 2px;
 				}
 			}
 			&.btn-better{
 				.green-btn;
-				.box-shadow(3px, 3px, 0, #3C6009);
-				text-shadow: -1px -1px 0 #3c6009;
-				top:60%;
+				top:0;
 				&:active{
-					margin-top:2px;
-					margin-left:2px;
-					.box-shadow(1px, 1px, 0, #3C6009);
+					top: 2px;
+					left: 2px;
 				}
 			}
 		}
@@ -68,10 +74,150 @@ body {
 		height:100%;
 		position:relative;
 		background:rgba(255, 255, 255, 0.9);
+		.buttons-wrapper{
+			height:40%;
+			background:rgb(255, 255, 255);
+			width:100%;
+			position:absolute;
+			bottom:0;
+			left:0;
+			.social-wrapper{
+				border-top:1px solid #CCCCCC;
+				border-bottom:1px solid #CCCCCC;
+				.clearfix;
+				.btn-facebook-wrap{
+					.clearfix;
+					padding:5%;
+					width:50%;
+					float:left;
+					.border-box;
+					border-right:1px solid #cccccc;
+				}
+				.btn-twitter-wrap{
+					.clearfix;
+					padding:5%;
+					width:50%;
+					float:left;
+					.border-box;
+				}
+				a{
+					font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+					font-size:1.4em;
+					color:#999999;
+					height:24px;
+					line-height:24px;
+					vertical-align:middle;
+					padding-left:30px;
+					display:block;
+					&.btn-facebook{
+						background-image:url(../images/fb-icon.svg);
+						background-repeat:no-repeat;
+						background-position: left top;
+					}
+					&.btn-twitter{
+						background-image:url(../images/twitter-icon.svg);
+						background-repeat:no-repeat;
+						background-position: left top;
+					}
+					&.active{
+						color:#0071BC;
+						background-position: left bottom;
+					}
+				}
+			}
+		}
+		.btn-share-wrap{
+			width:80%;
+			margin:0 10%;
+			top:40%;
+			.border-box;
+			position:absolute;
+			a{
+				&.btn-share{
+					padding:12px 20px;
+					position:absolute;
+					font-size:2.4em;
+					display:block;
+					.border-box;
+					.border-radius(5px);
+					text-align:center;
+					.animate(0.2);
+					.green-btn;
+					width:100%;
+					&:active{
+						top:2px;
+						left:2px;
+					}
+				}
+			}
+		}
+		.btn-start-wrapper{
+			position:absolute;
+			bottom:5%;
+			width:100%;
+			text-align:center;
+			a{
+				&.btn-start{
+					color:#CCCCCC;
+					background:url(../images/back-button.svg) no-repeat left center;
+					padding-left:30px;
+					font-size:2.4em;
+					display:inline-block;
+					&:active{
+					}
+				}
+			}
+		}
+	}
+	#app-info{
+		background:#fff;
+		.border-radius(5px);
+		.box-shadow(0, 0, 5px, rgba(0,0,0,0.2));
+		width:96%;
+		height:96%;
+		margin:2%;
+		position:absolute;
+		.border-box;
+		padding:20px;
+		z-index:65;
+		display:none;
+		h2{
+			font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+			color:#28AAE1;
+			font-size:2.1em;
+			position:relative;
+			text-align:left;
+			top:0;
+			text-shadow:none;
+			text-transform:none;
+		}
+		p{
+			font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+			color:#999999;
+			font-size:1.3em;
+			&.align-center{
+				text-align:center;
+			}
+		}
+		.btn-info-close-wrap{
+			position:absolute;
+			bottom:5%;
+			width:86%;
+			text-align:center;
+			a{
+				&.btn-info-close{
+					color:#ccc;
+					font-size:2em;
+					background:url(../images/close-button.svg) no-repeat left center;
+					padding-left:25px;
+					display:inline-block;
+				}
+			}
+		}
 	}
 	h2{
 		color:#000;
-		font-size:4.4em;
+		font-size:3.4em;
 		text-shadow:0 2px 0 #DCDCDC;
 		text-transform:uppercase;
 		text-align:center;
@@ -79,13 +225,14 @@ body {
 		top:20px;
 		width:100%;
 		margin:0;
+		letter-spacing:1px;
 		&.stress-state{
 		}
 	}
 	.timer{
 		text-align:center;
 		color:#000;
-		font-size:2.4em;
+		font-size:1.85em;
 		position:absolute;
 		bottom:15px;
 		width:100%;
@@ -105,27 +252,48 @@ body {
 		position:absolute;
 		top:20%;
 		width:100%;
-		.stress-slider{
+		.stress-slider-wrap{
 			background:url(../images/stress-dragger-bg.svg) no-repeat left top;
 			background-size:contain;
 			width:90%;
 			margin:0 auto;
 			position:relative;
 		}
-		.grip{
-			background:url(../images/dragger-button.svg) no-repeat center center;
-			width:50px;
-			height:50px;
-		}
-		.sound-slider{
+		.sound-slider-wrap{
 			background:url(../images/sound-dragger-bg.svg) no-repeat left top;
 			background-size:contain;
 			width:90%;
 			margin:0 auto;
 			position:relative;
-			.sound-dial{
-				width:300px;
-				height:200px;
+		}
+		.slider{
+			border:none;
+			background:none;
+			position:relative;
+			width:82%;
+			margin:0 9%;
+			height:65%;
+			top:5%;
+			.ui-slider-handle{
+				background:url(../images/dragger-button.svg) no-repeat center center;
+				position:absolute;
+				width:38px;
+				height:38px;
+				margin-left:-19px;
+				border:none;
+				&:focus{
+					outline:none;
+				}
+			}
+			&.stress-slider{
+				.ui-slider-handle{
+					top:100%;
+				}
+			}
+			&.sound-slider{
+				.ui-slider-handle{
+					top:0%;
+				}
 			}
 		}
 		.action-button{
@@ -140,6 +308,8 @@ body {
 			.border-radius(100%);
 			position:relative;
 			top:-230px;
+			text-shadow:-1px -2px 0 #006a99;
+			.animate(0.05s);
 			&.playing{
 				.blue-button-playing-gradient;
 				.box-shadow(0, 4px, 0, #4a7789);
@@ -150,7 +320,7 @@ body {
 			}
 		}
 	}
-	.info-button{
+	.btn-info{
 		font-size:1.4em;
 		color:#fff;
 		position:absolute;
@@ -164,7 +334,7 @@ body {
 		text-align:center;
 		.border-radius(21px);
 		.box-shadow(0, 2px, 0, #B2B2B2);
-		.animate(0.1s);
+		.animate(0.05s);
 		&:active{
 			bottom:8px;
 			.box-shadow(0, 0, 0, #B2B2B2);

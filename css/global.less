@@ -127,6 +127,12 @@
 	background: -ms-radial-gradient(center, ellipse cover,  rgba(138,209,239,1) 0%,rgba(41,171,226,1) 100%); /* IE10+ */
 	background: radial-gradient(ellipse at center,  rgba(138,209,239,1) 0%,rgba(41,171,226,1) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8ad1ef', endColorstr='#29abe2',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	.box-shadow(3px, 3px, 0, #2495bc);
+	text-shadow: -1px -1px 0 #006a99;
+	color:#fff;
+	&:active{
+		.box-shadow(1px, 1px, 0, #2495bc);
+	}
 }
 
 .green-btn{
@@ -138,6 +144,12 @@
 	background: -ms-radial-gradient(center, ellipse cover,  rgba(163,197,122,1) 0%,rgba(87,149,12,1) 100%); /* IE10+ */
 	background: radial-gradient(ellipse at center,  rgba(163,197,122,1) 0%,rgba(87,149,12,1) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a3c57a', endColorstr='#57950c',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	.box-shadow(3px, 3px, 0, #3C6009);
+	text-shadow: -1px -1px 0 #3c6009;
+	color:#fff;
+	&:active{
+		.box-shadow(1px, 1px, 0, #3C6009);
+	}
 }
 
 .gradient (@startColor: #eee, @endColor: white) {
