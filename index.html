@@ -5,7 +5,7 @@
 <title>Stress app</title>
 <link rel="stylesheet" href="css/style.css" />
 
-<!--<script src="cordova.js"></script>-->
+<script src="cordova.js"></script>
 <script src="scripts/jquery.min.js"></script>
 <script src="scripts/buzz.js"></script>
 <script src="scripts/jquery.knob.js"></script>
@@ -18,12 +18,14 @@
 <script type="text/javascript" charset="utf-8">
 	
 	// event listeners
-	//document.addEventListener("deviceready", onDeviceReady, false);
+	document.addEventListener("deviceready", onDeviceReady, false);
 	
+/*
 	$(document).ready(function(e) {
     onDeviceReady();
   });
-		
+*/
+	
 	function onDeviceReady() {
 		//document.addEventListener("online", onOnline, false);
 		document.addEventListener("resume", onResume, false);
@@ -38,6 +40,19 @@
 		}
 		*/
 		
+		
+		/*
+		var appMusic = new buzz.sound( "music/stress_app_music", {
+				formats: [ "ogg", "mp3" ],
+				preload: true,
+				autoplay: false,
+				loop: false
+		});*/
+		
+		
+
+		
+		/* Prepare visual of app */
 		$("#app-wrapper").height($(window).height());
 		
 		$('.stress-slider-wrap').height($('.stress-slider-wrap').width() / 2);
@@ -62,88 +77,66 @@
 			change: function( event, ui ) {
 			}
 		});
-				
-	/*
-		var stressDial = $(".stress-dial").knob({
-			'angleOffset': -75,
-			'angleArc': 150,
-			'width': sliderWidth-60,
-			'height': 260,
-			'thickness': .1,
-			'cursor': true,
-			'change': function(v){
-				console.log(v);
-			}
-		});
-		
-		var soundDial = $(".sound-dial").knob({
-			'angleOffset': 105,
-			'angleArc': 150,
-			'width': sliderWidth-60,
-			'height': 260,
-			'thickness': .1,
-			'change': function(v){
-				console.log(v);
-			}
-		});
-	*/
 	
 		var buttonWidth = $('.action-button').width();
 		$('.action-button').css('height', buttonWidth+'px').css('line-height', buttonWidth+'px').css("top", (buttonWidth/0.71)*(-1));;
 		
+		
 		/* MUSIC */
+		
 		var timerInterval;
-		var appMusic = new buzz.sound( "music/stress_app_music", {
-				formats: [ "ogg", "mp3" ],
-				preload: true,
-				autoplay: false,
-				loop: false
-		});
+		var musicPlaying = false;
+		var musicDuration;
 		
-		appMusic.bind('ended', function(e){
-			$("#app-content h2").fadeOut(200);
-			$("#app-finished").fadeIn(200);
-			$(".action-button").text("START").removeClass("playing");
-		});
+		// Create Media object from src
+		appMusic = new Media("music/stress_app_music.mp3", musicSuccess, musicError);
 		
-		appMusic.setTime(608);
+		function musicSuccess(){
+			musicDuration = appMusic.getDuration();
+		}
 		
-		$(".action-button").on('click', function(){
-			if (appMusic.isPaused()){
-				appMusic.play().fadeIn(250);
+		function musicError(){
+			alert("Can't load music.");
+		}
+		
+		appMusic.seekTo(600000);
+		
+		$(".action-button").on('touchstart', function(){
+			if (!musicPlaying){
+				appMusic.play();
+				musicPlaying = true;
 				timerInterval = setInterval(function(){ updateTimer(appMusic); }, 1000);
 				$(this).text("STOP").addClass("playing");
 			}
 			else{
-				appMusic.fadeOut(250, function(){
-					appMusic.pause();
-					clearInterval(timerInterval);
-				})
+				appMusic.pause();
+				musicPlaying = false;
+				clearInterval(timerInterval);
 				$(this).text("START").removeClass("playing");
 			}
 		});
 		
 		/* Buttons actions */
-		$("a.btn-again").on('click', function(){
+		$("a.btn-again").on('touchstart', function(){
 			$("#app-finished").fadeOut(200);
 			$("#app-content h2").fadeIn(100);
 		});
 		
-		$("a.btn-better").on('click', function(){
+		$("a.btn-better").on('touchstart', function(){
 			$("#app-finished").fadeOut(200);
 			$("#app-share").fadeIn(200);
 		});
 		
-		$("a.btn-start").on('click', function(){
+		$("a.btn-start").on('touchstart', function(){
 			$("#app-share").fadeOut(200);
 			$("#app-content h2").fadeIn(100);
 		});
 		
-		$("a.btn-info").on('click', function(){
+		$("a.btn-info").on('touchstart', function(){
 			$("#app-info").fadeIn(200);
 		});
 		
-		$("a.btn-info-close").on('click', function(){
+		$("a.btn-info-close").on('touchstart', function(){
 			$("#app-info").fadeOut(200);
 		});
 		
@@ -153,15 +146,23 @@
 	
 	function updateTimer(appMusic) {
 		var m, s;
-		time = 612 - appMusic.getTime();
+		time = appMusic.getDuration() - appMusic.getCurrentPosition();
 		
-		m = Math.floor(time / 60);
-		m = isNaN(m) ? "--" : m >= 10 ? m : "0" + m;
-		s = Math.floor(time % 60);
-		s = isNaN(s) ? "--" : s >= 10 ? s : "0" + s;
-		
-		$("span.min").text(m);
-		$("span.sec").text(s);
+		if (time == 0){
+			$("#app-content h2").fadeOut(200);
+			$("#app-finished").fadeIn(200);
+			$(".action-button").text("START").removeClass("playing");
+		}
+		else{		
+			time = time / 1000;
+			m = Math.floor(time / 60);
+			m = isNaN(m) ? "--" : m >= 10 ? m : "0" + m;
+			s = Math.floor(time % 60);
+			s = isNaN(s) ? "--" : s >= 10 ? s : "0" + s;
+			
+			$("span.min").text(m);
+			$("span.sec").text(s);
+		}
 	}
 	
 	function onOnline(){
