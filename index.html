@@ -89,11 +89,14 @@
 		var musicDuration;
 		
 		// Create Media object from src
-		appMusic = new Media("/android_asset/www/music/stress_app_music.mp3", musicSuccess, musicError);
+		if (device.platform == "Android") {
+			appMusic = new Media("/android_asset/www/music/stress_app_music.mp3", musicSuccess, musicError);
+		} else {
+			appMusic = new Media("music/stress_app_music.mp3", musicSuccess, musicError);
+		}
 		
 		function musicSuccess(){
 			musicDuration = appMusic.getDuration();
-			alert(musicDuration);
 		}
 		
 		function musicError(){
@@ -148,6 +151,8 @@
 	function updateTimer(appMusic) {
 		var m, s;
 		time = appMusic.getDuration() - appMusic.getCurrentPosition();
+		
+		alert(time);
 		
 		if (time == 0){
 			$("#app-content h2").fadeOut(200);
