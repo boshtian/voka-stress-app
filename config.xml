@@ -6,6 +6,9 @@
 
 <name>Stress App</name>
 
+<gap:platform name="ios" />
+<gap:platform name="android" />
+
 <preference name="phonegap-version" value="2.9.0" />
 <preference name="android-targetSdkVersion" value="14" />
 <preference name="android-minSdkVersion" value="7" />
@@ -16,6 +19,9 @@
 <preference name="permissions" value="none"/>
 <!-- to enable individual permissions use the following examples -->
 <feature name="http://api.phonegap.com/1.0/network"/>
+<feature name="http://api.phonegap.com/1.0/media"/>
+
+<gap:plugin name="com.phonegap.plugins.media" />
 
 <icon src="icons/ios/icon-57.png" gap:platform="ios" width="57" height="57" />
 <icon src="icons/ios/icon-72.png" gap:platform="ios" width="72" height="72" />
