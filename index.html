@@ -87,6 +87,7 @@
 		var timerInterval;
 		var musicPlaying = false;
 		var musicDuration;
+		var appMusic;
 		
 		// Create Media object from src
 		if (device.platform == "Android") {
@@ -152,7 +153,7 @@
 		var m, s;
 		time = appMusic.getDuration() - appMusic.getCurrentPosition();
 		
-		alert(time);
+		alert(appMusic.getDuration()+" / "+appMusic.getCurrentPosition());
 		
 		if (time == 0){
 			$("#app-content h2").fadeOut(200);
