@@ -21,7 +21,7 @@
 <feature name="http://api.phonegap.com/1.0/network"/>
 <feature name="http://api.phonegap.com/1.0/media"/>
 
-<gap:plugin name="com.phonegap.plugins.media" />
+<gap:plugin name="org.apache.cordova.audiohandler" />
 
 <icon src="icons/ios/icon-57.png" gap:platform="ios" width="57" height="57" />
 <icon src="icons/ios/icon-72.png" gap:platform="ios" width="72" height="72" />
