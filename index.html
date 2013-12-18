@@ -143,7 +143,7 @@
 			function (position) {
 				if (position > -1) {
 					time = appMusic.getDuration() - position;
-					alert(time);
+					$(".dev-time").text(time+" / "+Math.floor(time)+" / "+Math.round(time));
 					if (time == 0){
 						$("#app-content h2").fadeOut(200);
 						$("#app-finished").fadeIn(200);
@@ -209,6 +209,7 @@
         <div class="stress-slider-wrap"><div class="slider stress-slider"></div></div>
         <div class="sound-slider-wrap"><div class="slider sound-slider"></div></div>
         <div class="action-button">START</div>
+        <div class="dev-time"></div>
       </div>
       <div class="timer">
         <div class="title">DURATION:</div>
