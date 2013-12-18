@@ -30,6 +30,8 @@
 		document.addEventListener("resume", onResume, false);
 		
 		document.addEventListener("backbutton", function(e){
+			e.preventDefault();
+			navigator.app.exitApp();
 		}, false);
 		/*
 		try {
