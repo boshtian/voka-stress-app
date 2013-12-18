@@ -7,7 +7,6 @@
 
 <script src="cordova.js"></script>
 <script src="scripts/jquery.min.js"></script>
-<script src="scripts/buzz.js"></script>
 <script src="scripts/jquery.knob.js"></script>
 <script src="scripts/jquery-ui.min.js"></script>
 <script src="scripts/jquery.ui.touch-punch.js"></script>
@@ -39,18 +38,6 @@
 			alert(e);
 		}
 		*/
-		
-		
-		/*
-		var appMusic = new buzz.sound( "music/stress_app_music", {
-				formats: [ "ogg", "mp3" ],
-				preload: true,
-				autoplay: false,
-				loop: false
-		});*/
-		
-		
-
 		
 		/* Prepare visual of app */
 		$("#app-wrapper").height($(window).height());
@@ -156,7 +143,7 @@
 			function (position) {
 				if (position > -1) {
 					time = appMusic.getDuration() - position;
-					
+					alert(time);
 					if (time == 0){
 						$("#app-content h2").fadeOut(200);
 						$("#app-finished").fadeIn(200);
