@@ -218,8 +218,10 @@
 	}
 	
 	function setSliderPosition(pos){
+		alert(pos);
 		var sliderPos = Math.round(100 - ((pos / appMusic.getDuration()) * 100));
-		$stressSlider.slider("value", sliderPos);
+		alert(sliderPos);
+		$('.stress-slider').slider("value", sliderPos);
 		$soundSlider.slider("value", sliderPos);
 	}
 	
