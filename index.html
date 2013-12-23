@@ -144,10 +144,6 @@
 			}
 		});
 		
-		function setTextState(value){
-			$(".stress-state").text(stressStates[Math.floor(value/20)]);
-		}
-		
 		/* Buttons actions */
 		$("a.btn-again").on('touchstart', function(){
 			$("#app-finished").fadeOut(200);
@@ -198,8 +194,7 @@
 							$("#app-finished").fadeIn(200);
 							$(".action-button").text("START").removeClass("playing");
 						}
-						else{		
-							//time = time / 1000;
+						else{
 							m = Math.floor(time / 60);
 							m = isNaN(m) ? "--" : m >= 10 ? m : "0" + m;
 							s = Math.floor(time % 60);
@@ -207,7 +202,7 @@
 							$("span.min").text(m);
 							$("span.sec").text(s);
 	
-							//setTextState($('.stress-slider').slider("value"));
+							setTextState($('.stress-slider').slider("value"));
 							
 							setSliderPosition(position);
 						}
@@ -220,15 +215,17 @@
 			);
 		}
 		
+		function setTextState(value){
+			$(".stress-state").text(stressStates[Math.floor(value/20)]);
+		}
+		
 		function setSliderPosition(pos){
-			alert(appMusic.getDuration());
 			var sliderPos = Math.round(100 - ((pos / appMusic.getDuration()) * 100));
-			alert(sliderPos);
 			$('.stress-slider').slider("value", sliderPos);
 			$soundSlider.slider("value", sliderPos);
 		}
 		
-	}
+	} // End onDeviceReady()
 	
 	function onOnline(){
 	}
