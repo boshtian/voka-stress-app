@@ -120,10 +120,9 @@
 		}
 		
 		function musicSeekTo(value){
-			mD = appMusic.getDuration()
+			mDuration = appMusic.getDuration()
 			alert(mD);
 			alert(value);
-			var mDuration = mD / 1000;
 			alert(mDuration);
 			var musicTime = (mD * value) / 100;
 			alert(musicTime);
@@ -204,7 +203,7 @@
 						m = isNaN(m) ? "--" : m >= 10 ? m : "0" + m;
 						s = Math.floor(time % 60);
 						s = isNaN(s) ? "--" : s >= 10 ? s : "0" + s;
-						
+						alert(m+":"+s);
 						$("span.min").text(m);
 						$("span.sec").text(s);
 					}
