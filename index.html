@@ -17,22 +17,23 @@
 <script type="text/javascript" charset="utf-8">
 	
 	// event listeners
-	//document.addEventListener("deviceready", onDeviceReady, false);
+	document.addEventListener("deviceready", onDeviceReady, false);
 	
-
+/*
 	$(document).ready(function(e) {
     onDeviceReady();
   });
-	
+*/
 	function onDeviceReady() {
 		//document.addEventListener("online", onOnline, false);
-		/*
+		
 		document.addEventListener("resume", onResume, false);
 		
 		document.addEventListener("backbutton", function(e){
 			e.preventDefault();
 			navigator.app.exitApp();
-		}, false);*/
+		}, false);
+		
 		/*
 		try {
 			FB.init({ appId: "530146413715624", nativeInterface: CDV.FB, useCachedDialogs: false });
@@ -62,6 +63,7 @@
 				var sliderVal = ui.value;
 				var Y = (sliderVal*2) - 100;
 				$('.stress-slider a').css("top", (100 - (Math.sqrt((R*R) - (Y*Y)))) + "%");
+				setTextState(sliderVal);
 				$soundSlider.slider("value", sliderVal);
 			},
 			change: function( event, ui ) {
@@ -70,6 +72,7 @@
 				$('.stress-slider a').css("top", (100 - (Math.sqrt((R*R) - (Y*Y)))) + "%");
 			},
 			stop: function( event, ui ) {
+				musicSeekTo(ui.value);
 			}
 		});
 		
@@ -79,6 +82,7 @@
 				var sliderVal = ui.value;
 				var Y = (sliderVal*2) - 100;
 				$('.sound-slider a').css("top", (Math.sqrt((R*R) - (Y*Y))) + "%");
+				setTextState(sliderVal);
 				$stressSlider.slider("value", sliderVal);
 			},
 			change: function( event, ui ) {
@@ -114,7 +118,10 @@
 			alert("Can't load music.");
 		}
 		
-		appMusic.seekTo(600000);
+		function musicSeekTo(value){
+			var musicTime = ((musicDuration / 1000) * value) / 100;
+			appMusic.seekTo(musicTime);
+		}
 		
 		$(".action-button").on('touchstart', function(){
 			if (!musicPlaying){
@@ -130,6 +137,10 @@
 				$(this).text("START").removeClass("playing");
 			}
 		});
+		
+		function setTextState(value){
+			$(".stress-state").text(stressStates[Math.floor(value/20)]);
+		}
 		
 		/* Buttons actions */
 		$("a.btn-again").on('touchstart', function(){
