@@ -89,6 +89,9 @@
 				var sliderVal = ui.value;
 				var Y = (sliderVal*2) - 100;
 				$('.sound-slider a').css("top", (Math.sqrt((R*R) - (Y*Y))) + "%");
+			},
+			stop: function( event, ui ) {
+				musicSeekTo(ui.value);
 			}
 		});
 	
@@ -171,58 +174,60 @@
 		
 		/* End Button Actions */
 		
-	}
-	
-	function toDegrees (angle) {
-		return angle * (180 / Math.PI);
-	}
-	
-	function toRadians (angle) {
-		return angle * (Math.PI / 180);
-	}
-	
-	function updateTimer(appMusic) {
-		var m, s;
+		/* Other Functions */
 		
-		appMusic.getCurrentPosition(
-			function (position) {
-				if (position > -1) {
-					time = Math.round(appMusic.getDuration() - position);
-					if (time <= 1){
-						clearInterval(timerInterval);
-						appMusic.stop();
-						$("#app-content h2").fadeOut(200);
-						$("#app-finished").fadeIn(200);
-						$(".action-button").text("START").removeClass("playing");
-					}
-					else{		
-						//time = time / 1000;
-						m = Math.floor(time / 60);
-						m = isNaN(m) ? "--" : m >= 10 ? m : "0" + m;
-						s = Math.floor(time % 60);
-						s = isNaN(s) ? "--" : s >= 10 ? s : "0" + s;
-						$("span.min").text(m);
-						$("span.sec").text(s);
-
-						//setTextState($('.stress-slider').slider("value"));
-						
-						setSliderPosition(position);
-					}
-				}
-			},
-			// error callback
-			function (e) {
-					console.log("Error getting pos=" + e);
-			}
-		);
-	}
+		function toDegrees (angle) {
+			return angle * (180 / Math.PI);
+		}
+		
+		function toRadians (angle) {
+			return angle * (Math.PI / 180);
+		}
+		
+		function updateTimer(appMusic) {
+			var m, s;
+			
+			appMusic.getCurrentPosition(
+				function (position) {
+					if (position > -1) {
+						time = Math.round(appMusic.getDuration() - position);
+						if (time <= 1){
+							clearInterval(timerInterval);
+							appMusic.stop();
+							$("#app-content h2").fadeOut(200);
+							$("#app-finished").fadeIn(200);
+							$(".action-button").text("START").removeClass("playing");
+						}
+						else{		
+							//time = time / 1000;
+							m = Math.floor(time / 60);
+							m = isNaN(m) ? "--" : m >= 10 ? m : "0" + m;
+							s = Math.floor(time % 60);
+							s = isNaN(s) ? "--" : s >= 10 ? s : "0" + s;
+							$("span.min").text(m);
+							$("span.sec").text(s);
 	
-	function setSliderPosition(pos){
-		alert(appMusic.getDuration());
-		var sliderPos = Math.round(100 - ((pos / appMusic.getDuration()) * 100));
-		alert(sliderPos);
-		$('.stress-slider').slider("value", sliderPos);
-		$soundSlider.slider("value", sliderPos);
+							//setTextState($('.stress-slider').slider("value"));
+							
+							setSliderPosition(position);
+						}
+					}
+				},
+				// error callback
+				function (e) {
+						console.log("Error getting pos=" + e);
+				}
+			);
+		}
+		
+		function setSliderPosition(pos){
+			alert(appMusic.getDuration());
+			var sliderPos = Math.round(100 - ((pos / appMusic.getDuration()) * 100));
+			alert(sliderPos);
+			$('.stress-slider').slider("value", sliderPos);
+			$soundSlider.slider("value", sliderPos);
+		}
+		
 	}
 	
 	function onOnline(){
