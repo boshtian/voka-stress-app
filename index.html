@@ -112,6 +112,7 @@
 		
 		function musicSuccess(){
 			musicDuration = appMusic.getDuration();
+			alert("success: " + musicDuration);
 		}
 		
 		function musicError(){
@@ -119,11 +120,12 @@
 		}
 		
 		function musicSeekTo(value){
-			alert(appMusic.getDuration());
+			mD = appMusic.getDuration()
+			alert(mD);
 			alert(value);
-			var mDuration = musicDuration / 1000;
+			var mDuration = mD / 1000;
 			alert(mDuration);
-			var musicTime = (mDuration * value) / 100;
+			var musicTime = (mD * value) / 100;
 			alert(musicTime);
 			appMusic.seekTo(musicTime);
 		}
