@@ -211,6 +211,11 @@ body {
   /* IE6-9 fallback on horizontal gradient */
 
 }
+.dev-time {
+  position: absolute;
+  left: 10%;
+  top: 65%;
+}
 #app-wrapper {
   width: 100%;
   position: relative;
@@ -614,13 +619,14 @@ body {
   border: none;
   background: none;
   position: relative;
-  width: 82%;
+  width: 80%;
   margin: 0 9%;
-  height: 65%;
-  top: 5%;
+  height: 60%;
+  top: 10%;
 }
 #app-wrapper .circle-slider .slider .ui-slider-handle {
   background: url(../images/dragger-button.svg) no-repeat center center;
+  background-size: contain;
   position: absolute;
   width: 38px;
   height: 38px;
@@ -678,11 +684,11 @@ body {
   position: relative;
   top: -230px;
   text-shadow: -1px -2px 0 #006a99;
-  -webkit-transition: all 0.05s ease-out;
-  -moz-transition: all 0.05s ease-out;
-  -o-transition: all 0.05s ease-out;
-  -ms-transition: all 0.05s ease-out;
-  transition: all 0.05s ease-out;
+  -webkit-transition: all 0.02s ease-out;
+  -moz-transition: all 0.02s ease-out;
+  -o-transition: all 0.02s ease-out;
+  -ms-transition: all 0.02s ease-out;
+  transition: all 0.02s ease-out;
 }
 #app-wrapper .circle-slider .action-button.playing {
   background: #228db2;
@@ -757,4 +763,15 @@ body {
 }
 input {
   -webkit-user-select: auto;
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  /* Styles */
+}
+/* tablets (portrait) ----------- */
+@media all and (min-width: 768px) {
+  /*and (orientation : portrait) {*/
+  #app-wrapper .circle-slider .slider .ui-slider-handle {
+    width: 60px !important;
+    height: 60px !important;
+  }
 }
