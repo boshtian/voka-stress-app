@@ -122,7 +122,7 @@
 		function musicSeekTo(value){
 			mDuration = appMusic.getDuration()
 			alert(mDuration);
-			var musicTime = ((mD * value) / 100) * 1000;
+			var musicTime = ((mDuration * value) / 100) * 1000;
 			alert(musicTime);
 			appMusic.seekTo(musicTime);
 			updateTimer(appMusic);
