@@ -109,13 +109,17 @@
 		// Create Media object from src
 		if (device.platform == "Android") {
 			appMusic = new Media("/android_asset/www/music/stress_app_music.mp3", musicSuccess, musicError);
+			musicDuration = appMusic.getDuration();
+			appMusic.play();
+			appMusic.pause();
 		} else {
 			appMusic = new Media("music/stress_app_music.mp3", musicSuccess, musicError);
+			musicDuration = appMusic.getDuration();
+			appMusic.play();
+			appMusic.pause();
 		}
 		
 		function musicSuccess(){
-			musicDuration = appMusic.getDuration();
-			alert("success: " + musicDuration);
 		}
 		
 		function musicError(){
@@ -123,8 +127,7 @@
 		}
 		
 		function musicSeekTo(value){
-			mDuration = appMusic.getDuration()
-			var musicTime = ((mDuration * (100-value)) / 100) * 1000;
+			var musicTime = ((musicDuration * (100-value)) / 100) * 1000;
 			appMusic.seekTo(musicTime);
 			updateTimer(appMusic);
 		}
@@ -187,7 +190,7 @@
 				function (position) {
 					if (position > -1) {
 						time = Math.round(appMusic.getDuration() - position);
-						if (time <= 1){
+						if (time <= 0){
 							clearInterval(timerInterval);
 							appMusic.stop();
 							$("#app-content h2").fadeOut(200);
@@ -220,7 +223,7 @@
 		}
 		
 		function setSliderPosition(pos){
-			var sliderPos = Math.round(100 - ((pos / appMusic.getDuration()) * 100));
+			var sliderPos = 100 - ((pos / musicDuration) * 100);
 			$('.stress-slider').slider("value", sliderPos);
 			$soundSlider.slider("value", sliderPos);
 		}
