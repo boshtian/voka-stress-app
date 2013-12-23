@@ -203,7 +203,7 @@
 						s = isNaN(s) ? "--" : s >= 10 ? s : "0" + s;
 						$("span.min").text(m);
 						$("span.sec").text(s);
-						alert("i");
+
 						//setTextState($('.stress-slider').slider("value"));
 						
 						setSliderPosition(position);
@@ -218,7 +218,7 @@
 	}
 	
 	function setSliderPosition(pos){
-		alert(pos);
+		alert(appMusic.getDuration());
 		var sliderPos = Math.round(100 - ((pos / appMusic.getDuration()) * 100));
 		alert(sliderPos);
 		$('.stress-slider').slider("value", sliderPos);
