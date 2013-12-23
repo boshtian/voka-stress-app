@@ -121,9 +121,7 @@
 		
 		function musicSeekTo(value){
 			mDuration = appMusic.getDuration()
-			alert(mDuration);
 			var musicTime = ((mDuration * value) / 100) * 1000;
-			alert(musicTime);
 			appMusic.seekTo(musicTime);
 			updateTimer(appMusic);
 		}
@@ -205,6 +203,8 @@
 						$("span.min").text(m);
 						$("span.sec").text(s);
 					}
+					var setSliderVal = Math.round(position / appMusic.getDuration());
+					$stressSlider.slider("value", setSliderVal);
 				}
 			},
 			// error callback
