@@ -119,7 +119,10 @@
 		}
 		
 		function musicSeekTo(value){
+			alert(musicDuration);
+			alert(value);
 			var mDuration = musicDuration / 1000;
+			alert(mDuration);
 			var musicTime = (mDuration * value) / 100;
 			alert(musicTime);
 			appMusic.seekTo(musicTime);
