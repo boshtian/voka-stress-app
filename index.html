@@ -17,22 +17,22 @@
 <script type="text/javascript" charset="utf-8">
 	
 	// event listeners
-	document.addEventListener("deviceready", onDeviceReady, false);
+	//document.addEventListener("deviceready", onDeviceReady, false);
 	
-/*
+
 	$(document).ready(function(e) {
     onDeviceReady();
   });
-*/
 	
 	function onDeviceReady() {
 		//document.addEventListener("online", onOnline, false);
+		/*
 		document.addEventListener("resume", onResume, false);
 		
 		document.addEventListener("backbutton", function(e){
 			e.preventDefault();
 			navigator.app.exitApp();
-		}, false);
+		}, false);*/
 		/*
 		try {
 			FB.init({ appId: "530146413715624", nativeInterface: CDV.FB, useCachedDialogs: false });
@@ -49,29 +49,42 @@
 		
 		var sliderWidth = $('.stress-slider').width();
 		
+		var stressStates = new Array("Non stressed", "Mini stressed", "Stressed", "Ultra stressed", "I'm going crazy");
+		
 		var R = 100;
 		
-		$('.stress-slider').slider({
+		$stressSlider = $('.stress-slider');
+		$soundSlider = $('.sound-slider');
+		
+		$stressSlider.slider({
 			slide: function( event, ui ) {
 				var sliderVal = ui.value;
-				//$('.stress-slider a').css("top", Math.abs((sliderVal - 50)*2)+"%");
-				//$('.stress-slider a').css("top", 100 - (toDegrees(Math.sin(toRadians(sliderVal*1.8)))*2)+"%");
+				var sliderVal = ui.value;
 				var Y = (sliderVal*2) - 100;
 				$('.stress-slider a').css("top", (100 - (Math.sqrt((R*R) - (Y*Y)))) + "%");
+				$soundSlider.slider("value", sliderVal);
 			},
 			change: function( event, ui ) {
+				var sliderVal = ui.value;
+				var Y = (sliderVal*2) - 100;
+				$('.stress-slider a').css("top", (100 - (Math.sqrt((R*R) - (Y*Y)))) + "%");
 			},
 			stop: function( event, ui ) {
 			}
 		});
 		
-		$soundSlider = $('.sound-slider').slider({
+		$soundSlider.slider({
 			slide: function( event, ui ) {
+				var sliderVal = ui.value;
 				var sliderVal = ui.value;
 				var Y = (sliderVal*2) - 100;
 				$('.sound-slider a').css("top", (Math.sqrt((R*R) - (Y*Y))) + "%");
+				$stressSlider.slider("value", sliderVal);
 			},
 			change: function( event, ui ) {
+				var sliderVal = ui.value;
+				var Y = (sliderVal*2) - 100;
+				$('.sound-slider a').css("top", (Math.sqrt((R*R) - (Y*Y))) + "%");
 			}
 		});
 	
@@ -160,15 +173,15 @@
 		appMusic.getCurrentPosition(
 			function (position) {
 				if (position > -1) {
-					time = appMusic.getDuration() - position;
-					$(".dev-time").text(time+" / "+Math.floor(time)+" / "+Math.round(time));
+					time = Math.round(appMusic.getDuration() - position);
 					if (time == 0){
+						clearInterval(timerInterval);
 						$("#app-content h2").fadeOut(200);
 						$("#app-finished").fadeIn(200);
 						$(".action-button").text("START").removeClass("playing");
 					}
 					else{		
-						time = time / 1000;
+						//time = time / 1000;
 						m = Math.floor(time / 60);
 						m = isNaN(m) ? "--" : m >= 10 ? m : "0" + m;
 						s = Math.floor(time % 60);
@@ -227,7 +240,6 @@
         <div class="stress-slider-wrap"><div class="slider stress-slider"></div></div>
         <div class="sound-slider-wrap"><div class="slider sound-slider"></div></div>
         <div class="action-button">START</div>
-        <div class="dev-time"></div>
       </div>
       <div class="timer">
         <div class="title">DURATION:</div>

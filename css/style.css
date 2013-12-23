@@ -768,7 +768,7 @@ input {
   /* Styles */
 }
 /* tablets (portrait) ----------- */
-@media all and (min-width: 768px) {
+@media all and (min-width: 480px) {
   /*and (orientation : portrait) {*/
   #app-wrapper .circle-slider .slider .ui-slider-handle {
     width: 60px !important;
