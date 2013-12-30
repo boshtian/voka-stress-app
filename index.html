@@ -17,13 +17,13 @@
 <script type="text/javascript" charset="utf-8">
 	
 	// event listeners
-	document.addEventListener("deviceready", onDeviceReady, false);
+	//document.addEventListener("deviceready", onDeviceReady, false);
 	
-/*
+
 	$(document).ready(function(e) {
     onDeviceReady();
   });
-*/
+
 	function onDeviceReady() {
 		//document.addEventListener("online", onOnline, false);
 		
@@ -166,6 +166,28 @@
 			$("#app-info").fadeOut(200);
 		});
 		
+		$("a.btn-facebook").on('touchstart', function(){
+			$(this).toggleClass('active');
+		});
+		
+		$("a.btn-twitter").on('touchstart', function(){
+			$(this).toggleClass('active');
+		});
+		
+		$("a.btn-share").on('touchstart', function(){
+			if (!$("a.btn-facebook").hasClass('active') && !$("a.btn-twitter").hasClass('active')){
+				alert('No social network selected');
+			}
+			else{
+				if ($("a.btn-facebook").hasClass('active')){
+					alert('Share to FB');
+				}
+				if ($("a.btn-twitter").hasClass('active')){
+					alert('Share to Twitter');
+				}
+			}
+		});
+		
 		/* End Button Actions */
 		
 		/* Other Functions */
@@ -286,6 +308,9 @@
     
     <div data-role="content" id="app-share">
       <h2>I'm better now</h2>
+     	<div class="share-text-wrapper">
+      	<textarea id="share-text" placeholder="Share your thoughts ..."></textarea>
+      </div>
       <div class="buttons-wrapper">
         <div class="social-wrapper">
         	<div class="btn-facebook-wrap">
