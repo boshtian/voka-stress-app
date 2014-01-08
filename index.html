@@ -214,6 +214,12 @@
 						time = Math.round(appMusic.getDuration() - position);
 						if (time <= 0){
 							clearInterval(timerInterval);
+							m = Math.floor(time / 60);
+							m = isNaN(m) ? "--" : m >= 10 ? m : "0" + m;
+							s = Math.floor(time % 60);
+							s = isNaN(s) ? "--" : s >= 10 ? s : "0" + s;
+							$("span.min").text(m);
+							$("span.sec").text(s);
 							appMusic.stop();
 							$("#app-content h2").fadeOut(200);
 							$("#app-finished").fadeIn(200);
@@ -226,9 +232,10 @@
 							s = isNaN(s) ? "--" : s >= 10 ? s : "0" + s;
 							$("span.min").text(m);
 							$("span.sec").text(s);
-	
-							setTextState($('.stress-slider').slider("value"));
-							if (!sliderLock){
+							
+							alert(sliderLock);
+							if (sliderLock == false){
+								setTextState($('.stress-slider').slider("value"));						
 								setSliderPosition(position);
 							}
 						}
