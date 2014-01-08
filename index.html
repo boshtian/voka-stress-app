@@ -267,17 +267,23 @@
 			$soundSlider.slider("value", sliderPos);
 		}
 		
+		function loadURL(url){
+			var device = window.device.name;
+			if (device == "Android"){
+				navigator.app.loadUrl(url, { openExternal:true });
+			}
+			else if (device == "iPhone"){
+				window.open(url, '_system');
+			}
+			return false;
+		}
+		
 	} // End onDeviceReady()
 	
 	function onOnline(){
 	}
 	
 	function onResume(){
-	}
-	
-	function loadURL(url){
-    navigator.app.loadUrl(url, { openExternal:true });
-    return false;
 	}
 	
 	/*
