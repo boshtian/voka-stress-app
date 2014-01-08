@@ -10,9 +10,6 @@
 <script src="scripts/jquery.knob.js"></script>
 <script src="scripts/jquery-ui.min.js"></script>
 <script src="scripts/jquery.ui.touch-punch.js"></script>
-<!--<script src="scripts/jquery.mobile-1.1.1.min.js"></script>-->
-<!--<script src="scripts/cdv-plugin-fb-connect.js"></script>-->
-<!--<script src="scripts/facebook-js-sdk.js"></script>-->
 <script src="js/plugins/SocialSharing.js"></script>
 
 <script type="text/javascript" charset="utf-8">
@@ -180,12 +177,12 @@
 		});
 		
 		$("a.btn-share").on('touchstart', function(){
-			var msg = $("#share-text").text();
+			var msg = $("#share-text").val();
 			if (msg == ""){
 				alert("Type in some text.");
 			}
 			else{
-				window.plugins.socialsharing.share('Message', 'Stress App');
+				window.plugins.socialsharing.share(msg, 'Stress Away');
 			}
 			/*
 			if (!$("a.btn-facebook").hasClass('active') && !$("a.btn-twitter").hasClass('active')){
@@ -281,21 +278,7 @@
 		$.mobile.defaultDialogTransition = 'none';
 	  $.mobile.useFastClick = false;
 	});
-	
-	function facebookPostToWall(event) {
-		var params = {
-				method: 'feed',
-				name: 'Tap Water Ljubljana',
-				link: 'https://play.google.com/store/apps/details?id=si.enki.tapwaterljubljana',
-				picture: arr_images[event.data.mid],
-				caption: 'Tap Water Ljubljana',
-				description: 'Thirsty in Ljubljana? Install this app and find yourself a free drinking water fountain.'
-			};
-		FB.ui(params, function(obj) {
-			//console.log(obj);
-		});
-	}
-*/	
+	*/	
 </script>
 </head> 
 
