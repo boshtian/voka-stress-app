@@ -275,6 +275,11 @@
 	function onResume(){
 	}
 	
+	function loadURL(url){
+    navigator.app.loadUrl(url, { openExternal:true });
+    return false;
+	}
+	
 	/*
 	// on mobileinit
 	$(document).on("mobileinit", function() {
@@ -342,8 +347,8 @@
       <p>A must have for every hard worker out there! Stress Away is a superchilling app which helps you to relax during work or after work hours. Easy and helpfull. Try it, enjoy it, share it.</p>
 			<p>And pay atention … the more you use it, sooner we'll upgrade it.<br /><br /></p>
       <p class="align-center"><img src="images/voka-logo.svg" /></p>
-      <p class="align-center">JP VODOVOD - KANALIZACIJA d.o.o.<br />Vodovodna cesta 90, SI-1000 Ljubljana<br /><a href="www.vo-ka.si" target="_blank">www.vo-ka.si</a></p>
-      <p class="align-center">© 2013 JP VODOVOD - KANALIZACIJA d.o.o.<br />Designed by: <a href="http://www.enki.eu" target="_blank">ENKI</a></p>
+      <p class="align-center">JP VODOVOD - KANALIZACIJA d.o.o.<br />Vodovodna cesta 90, SI-1000 Ljubljana<br /><a href="#" onClick="loadURL('http://www.vo-ka.si')">www.vo-ka.si</a></p>
+      <p class="align-center">© 2013 JP VODOVOD - KANALIZACIJA d.o.o.<br />Designed by: <a href="#" onClick="loadURL('http://www.enki.eu')">ENKI</a></p>
       <div class="btn-info-close-wrap">
 	      <a data-role="button" class="btn-info-close">Close</a>
       </div>
