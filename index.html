@@ -259,15 +259,13 @@
 			$soundSlider.slider("value", sliderPos);
 		}
 		
-		
-		
 		function openURL(url){
-			var device = window.device.name;
-			alert(device);
-			if (device == "Android"){
+			var dvc = device.name;
+			alert(dvc);
+			if (dvc == "Android"){
 				navigator.app.loadUrl(url, { openExternal:true });
 			}
-			else if (device == "iPhone"){
+			else if (dvc == "iPhone"){
 				window.open(url, '_system');
 			}
 			return false;
