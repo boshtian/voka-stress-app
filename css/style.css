@@ -128,16 +128,16 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8ad1ef', endColorstr='#29abe2', GradientType=1);
   /* IE6-9 fallback on horizontal gradient */
 
-  box-shadow: 3px 3px 0 #2495bc;
   -moz-box-shadow: 3px 3px 0 #2495bc;
   -webkit-box-shadow: 3px 3px 0 #2495bc;
+  box-shadow: 3px 3px 0 #2495bc;
   text-shadow: -1px -1px 0 #006a99;
   color: #fff;
 }
 .blue-btn:active {
-  box-shadow: 1px 1px 0 #2495bc;
   -moz-box-shadow: 1px 1px 0 #2495bc;
   -webkit-box-shadow: 1px 1px 0 #2495bc;
+  box-shadow: 1px 1px 0 #2495bc;
 }
 .green-btn {
   background: #a3c57a;
@@ -164,16 +164,16 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a3c57a', endColorstr='#57950c', GradientType=1);
   /* IE6-9 fallback on horizontal gradient */
 
-  box-shadow: 3px 3px 0 #3c6009;
   -moz-box-shadow: 3px 3px 0 #3c6009;
   -webkit-box-shadow: 3px 3px 0 #3c6009;
+  box-shadow: 3px 3px 0 #3c6009;
   text-shadow: -1px -1px 0 #3c6009;
   color: #fff;
 }
 .green-btn:active {
-  box-shadow: 1px 1px 0 #3c6009;
   -moz-box-shadow: 1px 1px 0 #3c6009;
   -webkit-box-shadow: 1px 1px 0 #3c6009;
+  box-shadow: 1px 1px 0 #3c6009;
 }
 /* CSS Document */
 html {
@@ -286,17 +286,17 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8ad1ef', endColorstr='#29abe2', GradientType=1);
   /* IE6-9 fallback on horizontal gradient */
 
-  box-shadow: 3px 3px 0 #2495bc;
   -moz-box-shadow: 3px 3px 0 #2495bc;
   -webkit-box-shadow: 3px 3px 0 #2495bc;
+  box-shadow: 3px 3px 0 #2495bc;
   text-shadow: -1px -1px 0 #006a99;
   color: #fff;
   top: 0;
 }
 #app-wrapper #app-finished a.btn-again:active {
-  box-shadow: 1px 1px 0 #2495bc;
   -moz-box-shadow: 1px 1px 0 #2495bc;
   -webkit-box-shadow: 1px 1px 0 #2495bc;
+  box-shadow: 1px 1px 0 #2495bc;
 }
 #app-wrapper #app-finished a.btn-again:active {
   top: 2px;
@@ -327,17 +327,17 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a3c57a', endColorstr='#57950c', GradientType=1);
   /* IE6-9 fallback on horizontal gradient */
 
-  box-shadow: 3px 3px 0 #3c6009;
   -moz-box-shadow: 3px 3px 0 #3c6009;
   -webkit-box-shadow: 3px 3px 0 #3c6009;
+  box-shadow: 3px 3px 0 #3c6009;
   text-shadow: -1px -1px 0 #3c6009;
   color: #fff;
   top: 0;
 }
 #app-wrapper #app-finished a.btn-better:active {
-  box-shadow: 1px 1px 0 #3c6009;
   -moz-box-shadow: 1px 1px 0 #3c6009;
   -webkit-box-shadow: 1px 1px 0 #3c6009;
+  box-shadow: 1px 1px 0 #3c6009;
 }
 #app-wrapper #app-finished a.btn-better:active {
   top: 2px;
@@ -391,9 +391,9 @@ body {
   -o-border-radius: 5px;
   -ms-border-radius: 5px;
   border-radius: 5px;
-  box-shadow: 0 0 10px #cccccc;
   -moz-box-shadow: 0 0 10px #cccccc;
   -webkit-box-shadow: 0 0 10px #cccccc;
+  box-shadow: 0 0 10px #cccccc;
   resize: none;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -543,17 +543,17 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a3c57a', endColorstr='#57950c', GradientType=1);
   /* IE6-9 fallback on horizontal gradient */
 
-  box-shadow: 3px 3px 0 #3c6009;
   -moz-box-shadow: 3px 3px 0 #3c6009;
   -webkit-box-shadow: 3px 3px 0 #3c6009;
+  box-shadow: 3px 3px 0 #3c6009;
   text-shadow: -1px -1px 0 #3c6009;
   color: #fff;
   width: 100%;
 }
 #app-wrapper #app-share .btn-share-wrap a.btn-share:active {
-  box-shadow: 1px 1px 0 #3c6009;
   -moz-box-shadow: 1px 1px 0 #3c6009;
   -webkit-box-shadow: 1px 1px 0 #3c6009;
+  box-shadow: 1px 1px 0 #3c6009;
 }
 #app-wrapper #app-share .btn-share-wrap a.btn-share:active {
   top: 2px;
@@ -579,9 +579,9 @@ body {
   -o-border-radius: 5px;
   -ms-border-radius: 5px;
   border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   width: 96%;
   height: 96%;
   margin: 2%;
@@ -726,9 +726,9 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#29abe2', endColorstr='#29abe2', GradientType=1);
   /* IE6-9 fallback on horizontal gradient */
 
-  box-shadow: 0 4px 0 #2495bc;
   -moz-box-shadow: 0 4px 0 #2495bc;
   -webkit-box-shadow: 0 4px 0 #2495bc;
+  box-shadow: 0 4px 0 #2495bc;
   text-align: center;
   color: #fff;
   font-size: 5em;
@@ -772,15 +772,15 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#228db2', endColorstr='#228db2', GradientType=1);
   /* IE6-9 fallback on horizontal gradient */
 
-  box-shadow: 0 4px 0 #4a7789;
   -moz-box-shadow: 0 4px 0 #4a7789;
   -webkit-box-shadow: 0 4px 0 #4a7789;
+  box-shadow: 0 4px 0 #4a7789;
 }
 #app-wrapper .circle-slider .action-button:active {
   margin-top: 4px;
-  box-shadow: 0 0 0 #2495bc;
   -moz-box-shadow: 0 0 0 #2495bc;
   -webkit-box-shadow: 0 0 0 #2495bc;
+  box-shadow: 0 0 0 #2495bc;
 }
 #app-wrapper .btn-info {
   font-size: 1.4em;
@@ -799,9 +799,9 @@ body {
   -o-border-radius: 21px;
   -ms-border-radius: 21px;
   border-radius: 21px;
-  box-shadow: 0 2px 0 #b2b2b2;
   -moz-box-shadow: 0 2px 0 #b2b2b2;
   -webkit-box-shadow: 0 2px 0 #b2b2b2;
+  box-shadow: 0 2px 0 #b2b2b2;
   -webkit-transition: all 0.05s ease-out;
   -moz-transition: all 0.05s ease-out;
   -o-transition: all 0.05s ease-out;
@@ -810,9 +810,9 @@ body {
 }
 #app-wrapper .btn-info:active {
   bottom: 8px;
-  box-shadow: 0 0 0 #b2b2b2;
   -moz-box-shadow: 0 0 0 #b2b2b2;
   -webkit-box-shadow: 0 0 0 #b2b2b2;
+  box-shadow: 0 0 0 #b2b2b2;
 }
 * {
   -webkit-touch-callout: none;

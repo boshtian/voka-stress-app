@@ -128,16 +128,16 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8ad1ef', endColorstr='#29abe2', GradientType=1);
   /* IE6-9 fallback on horizontal gradient */
 
-  box-shadow: 3px 3px 0 #2495bc;
   -moz-box-shadow: 3px 3px 0 #2495bc;
   -webkit-box-shadow: 3px 3px 0 #2495bc;
+  box-shadow: 3px 3px 0 #2495bc;
   text-shadow: -1px -1px 0 #006a99;
   color: #fff;
 }
 .blue-btn:active {
-  box-shadow: 1px 1px 0 #2495bc;
   -moz-box-shadow: 1px 1px 0 #2495bc;
   -webkit-box-shadow: 1px 1px 0 #2495bc;
+  box-shadow: 1px 1px 0 #2495bc;
 }
 .green-btn {
   background: #a3c57a;
@@ -164,14 +164,14 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a3c57a', endColorstr='#57950c', GradientType=1);
   /* IE6-9 fallback on horizontal gradient */
 
-  box-shadow: 3px 3px 0 #3c6009;
   -moz-box-shadow: 3px 3px 0 #3c6009;
   -webkit-box-shadow: 3px 3px 0 #3c6009;
+  box-shadow: 3px 3px 0 #3c6009;
   text-shadow: -1px -1px 0 #3c6009;
   color: #fff;
 }
 .green-btn:active {
-  box-shadow: 1px 1px 0 #3c6009;
   -moz-box-shadow: 1px 1px 0 #3c6009;
   -webkit-box-shadow: 1px 1px 0 #3c6009;
+  box-shadow: 1px 1px 0 #3c6009;
 }
