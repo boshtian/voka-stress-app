@@ -54,12 +54,13 @@
 		
 		var R = 100;
 		
+		var sliderLock = false;
+		
 		$stressSlider = $('.stress-slider');
 		$soundSlider = $('.sound-slider');
 		
 		$stressSlider.slider({
 			slide: function( event, ui ) {
-				var sliderVal = ui.value;
 				var sliderVal = ui.value;
 				var Y = (sliderVal*2) - 100;
 				$('.stress-slider a').css("top", (100 - (Math.sqrt((R*R) - (Y*Y)))) + "%");
@@ -71,8 +72,12 @@
 				var Y = (sliderVal*2) - 100;
 				$('.stress-slider a').css("top", (100 - (Math.sqrt((R*R) - (Y*Y)))) + "%");
 			},
+			start: function( event, ui ) {
+				sliderLock = true;
+			},
 			stop: function( event, ui ) {
 				musicSeekTo(ui.value);
+				sliderLock = false;
 			}
 		});
 		
@@ -129,7 +134,7 @@
 		
 		$(".action-button").on('touchstart', function(){
 			if (!musicPlaying){
-				appMusic.play();
+				appMusic.play({ playAudioWhenScreenIsLocked : true });
 				musicPlaying = true;
 				timerInterval = setInterval(function(){ updateTimer(appMusic); }, 1000);
 				$(this).text("STOP").addClass("playing");
@@ -223,8 +228,9 @@
 							$("span.sec").text(s);
 	
 							setTextState($('.stress-slider').slider("value"));
-							
-							setSliderPosition(position);
+							if (!sliderLock){
+								setSliderPosition(position);
+							}
 						}
 					}
 				},
