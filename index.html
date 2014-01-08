@@ -39,8 +39,6 @@
 		$('.stress-slider-wrap').height($('.stress-slider-wrap').width() / 2);
 		$('.sound-slider-wrap').height($('.sound-slider-wrap').width() / 2);
 		
-		var devicePlatform = device.platform;
-		
 		var sliderWidth = $('.stress-slider').width();
 		
 		var stressStates = new Array("Non stressed", "Mini stressed", "Stressed", "Ultra stressed", "I'm going crazy");
@@ -262,11 +260,11 @@
 		}
 		
 		function openURL(url){
-			alert(devicePlatform);
+			var devicePlatform = device.platform;
 			if (devicePlatform == "Android"){
 				navigator.app.loadUrl(url, { openExternal:true });
 			}
-			else if (devicePlatform == "iPhone"){
+			else if ((devicePlatform == "iPhone") || (devicePlatform == "iOS")){
 				window.open(url, '_system');
 			}
 			return false;
