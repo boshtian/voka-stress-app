@@ -29,6 +29,7 @@
 		
 		document.addEventListener("backbutton", function(e){
 			e.preventDefault();
+			appMusic.release();
 			navigator.app.exitApp();
 		}, false);
 		
@@ -135,12 +136,16 @@
 				musicPlaying = true;
 				timerInterval = setInterval(function(){ updateTimer(appMusic); }, 1000);
 				$(this).text("STOP").addClass("playing");
+				// prevent device from sleeping
+				window.plugins.powerManagement.acquire();
 			}
 			else{
 				appMusic.pause();
 				musicPlaying = false;
 				clearInterval(timerInterval);
 				$(this).text("START").removeClass("playing");
+				// allow device to sleep
+				window.plugins.powerManagement.release();
 			}
 		});
 		
