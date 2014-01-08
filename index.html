@@ -189,19 +189,11 @@
 			else{
 				window.plugins.socialsharing.share(msg, 'Stress Away');
 			}
-			/*
-			if (!$("a.btn-facebook").hasClass('active') && !$("a.btn-twitter").hasClass('active')){
-				alert('No social network selected');
-			}
-			else{
-				if ($("a.btn-facebook").hasClass('active')){
-					alert('Share to FB');
-				}
-				if ($("a.btn-twitter").hasClass('active')){
-					alert('Share to Twitter');
-				}
-			}
-			*/
+		});
+		
+		$("a.external-link").on('touchstart', function(){
+			url = $(this).attr('rel');
+			openURL(url);
 		});
 		
 		/* End Button Actions */
@@ -267,8 +259,11 @@
 			$soundSlider.slider("value", sliderPos);
 		}
 		
-		function loadURL(url){
+		
+		
+		function openURL(url){
 			var device = window.device.name;
+			alert(device);
 			if (device == "Android"){
 				navigator.app.loadUrl(url, { openExternal:true });
 			}
@@ -353,8 +348,8 @@
       <p>A must have for every hard worker out there! Stress Away is a superchilling app which helps you to relax during work or after work hours. Easy and helpfull. Try it, enjoy it, share it.</p>
 			<p>And pay atention … the more you use it, sooner we'll upgrade it.<br /><br /></p>
       <p class="align-center"><img src="images/voka-logo.svg" /></p>
-      <p class="align-center">JP VODOVOD - KANALIZACIJA d.o.o.<br />Vodovodna cesta 90, SI-1000 Ljubljana<br /><a href="#" onClick="loadURL('http://www.vo-ka.si')">www.vo-ka.si</a></p>
-      <p class="align-center">© 2013 JP VODOVOD - KANALIZACIJA d.o.o.<br />Designed by: <a href="#" onClick="loadURL('http://www.enki.eu')">ENKI</a></p>
+      <p class="align-center">JP VODOVOD - KANALIZACIJA d.o.o.<br />Vodovodna cesta 90, SI-1000 Ljubljana<br /><a href="#" class="external-link" rel="http://www.vo-ka.si">www.vo-ka.si</a></p>
+      <p class="align-center">© 2013 JP VODOVOD - KANALIZACIJA d.o.o.<br />Designed by: <a href="#" class="external-link" rel="http://www.enki.eu">ENKI</a></p>
       <div class="btn-info-close-wrap">
 	      <a data-role="button" class="btn-info-close">Close</a>
       </div>
