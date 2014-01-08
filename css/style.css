@@ -612,6 +612,10 @@ body {
 #app-wrapper #app-info p.align-center {
   text-align: center;
 }
+#app-wrapper #app-info p a {
+  color: #999999;
+  text-decoration: none;
+}
 #app-wrapper #app-info .btn-info-close-wrap {
   position: absolute;
   bottom: 5%;
