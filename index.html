@@ -74,10 +74,12 @@
 			},
 			start: function( event, ui ) {
 				sliderLock = true;
+				$('span.debug').text(sliderLock);
 			},
 			stop: function( event, ui ) {
 				musicSeekTo(ui.value);
 				sliderLock = false;
+				$('span.debug').text(sliderLock);
 			}
 		});
 		
@@ -95,8 +97,13 @@
 				var Y = (sliderVal*2) - 100;
 				$('.sound-slider a').css("top", (Math.sqrt((R*R) - (Y*Y))) + "%");
 			},
+			start: function( event, ui ) {
+				sliderLock = true;
+				$('span.debug').text(sliderLock);
+			},
 			stop: function( event, ui ) {
 				musicSeekTo(ui.value);
+				$('span.debug').text(sliderLock);
 			}
 		});
 	
@@ -232,8 +239,7 @@
 							s = isNaN(s) ? "--" : s >= 10 ? s : "0" + s;
 							$("span.min").text(m);
 							$("span.sec").text(s);
-							
-							alert(sliderLock);
+							$('span.debugint').text(" | "+sliderLock);
 							if (sliderLock == false){
 								setTextState($('.stress-slider').slider("value"));						
 								setSliderPosition(position);
@@ -303,7 +309,7 @@
         <div class="action-button">START</div>
       </div>
       <div class="timer">
-        <div class="title">DURATION:</div>
+        <div class="title">DURATION:<span class="debug"></span><span class="debugint"></span></div>
         <div class="time"><span class="min">00</span>M <span class="sec">00</span>S</div>
       </div>
       <a data-role="button" class="btn-info">INFO</a>
