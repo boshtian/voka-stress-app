@@ -11,8 +11,9 @@
 <script src="scripts/jquery-ui.min.js"></script>
 <script src="scripts/jquery.ui.touch-punch.js"></script>
 <!--<script src="scripts/jquery.mobile-1.1.1.min.js"></script>-->
-<script src="scripts/cdv-plugin-fb-connect.js"></script>
-<script src="scripts/facebook-js-sdk.js"></script>
+<!--<script src="scripts/cdv-plugin-fb-connect.js"></script>-->
+<!--<script src="scripts/facebook-js-sdk.js"></script>-->
+<script src="js/plugins/SocialSharing.js"></script>
 
 <script type="text/javascript" charset="utf-8">
 	
@@ -187,6 +188,8 @@
 		});
 		
 		$("a.btn-share").on('touchstart', function(){
+			window.plugins.socialsharing.share('Message', 'Subject');
+			/*
 			if (!$("a.btn-facebook").hasClass('active') && !$("a.btn-twitter").hasClass('active')){
 				alert('No social network selected');
 			}
@@ -198,6 +201,7 @@
 					alert('Share to Twitter');
 				}
 			}
+			*/
 		});
 		
 		/* End Button Actions */
