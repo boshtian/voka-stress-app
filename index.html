@@ -55,13 +55,14 @@
 		var R = 100;
 		
 		var sliderLock = false;
+		var sliderVal = 0;
 		
 		$stressSlider = $('.stress-slider');
 		$soundSlider = $('.sound-slider');
 		
 		$stressSlider.slider({
 			slide: function( event, ui ) {
-				var sliderVal = ui.value;
+				sliderVal = ui.value;
 				var Y = (sliderVal*2) - 100;
 				$('.stress-slider a').css("top", (100 - (Math.sqrt((R*R) - (Y*Y)))) + "%");
 				setTextState(sliderVal);
@@ -74,12 +75,10 @@
 			},
 			start: function( event, ui ) {
 				sliderLock = true;
-				$('span.debug').text(sliderLock);
 			},
 			stop: function( event, ui ) {
 				musicSeekTo(ui.value);
 				sliderLock = false;
-				$('span.debug').text(sliderLock);
 			}
 		});
 		
@@ -99,11 +98,10 @@
 			},
 			start: function( event, ui ) {
 				sliderLock = true;
-				$('span.debug').text(sliderLock);
 			},
 			stop: function( event, ui ) {
 				musicSeekTo(ui.value);
-				$('span.debug').text(sliderLock);
+				sliderLock = false;
 			}
 		});
 	
@@ -126,10 +124,12 @@
 		}
 		
 		function musicSuccess(){
+			appMusic.play();
+			appMusic.pause();
 		}
 		
 		function musicError(){
-			alert("Can't load music.");
+			alert("Can't load music. Try again.");
 		}
 		
 		function musicSeekTo(value){
@@ -227,7 +227,7 @@
 							s = isNaN(s) ? "--" : s >= 10 ? s : "0" + s;
 							$("span.min").text(m);
 							$("span.sec").text(s);
-							appMusic.stop();
+							appMusic.pause();
 							$("#app-content h2").fadeOut(200);
 							$("#app-finished").fadeIn(200);
 							$(".action-button").text("START").removeClass("playing");
@@ -239,7 +239,6 @@
 							s = isNaN(s) ? "--" : s >= 10 ? s : "0" + s;
 							$("span.min").text(m);
 							$("span.sec").text(s);
-							$('span.debugint').text(" | "+sliderLock);
 							if (sliderLock == false){
 								setTextState($('.stress-slider').slider("value"));						
 								setSliderPosition(position);
@@ -309,7 +308,7 @@
         <div class="action-button">START</div>
       </div>
       <div class="timer">
-        <div class="title">DURATION:<span class="debug"></span><span class="debugint"></span></div>
+        <div class="title">DURATION:<span class="debug"></span></div>
         <div class="time"><span class="min">00</span>M <span class="sec">00</span>S</div>
       </div>
       <a data-role="button" class="btn-info">INFO</a>
