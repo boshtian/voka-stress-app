@@ -4,7 +4,7 @@
     id        = "si.enki.stressflush"
     version   = "1.0">
 
-<name>Stress Away</name>
+<name>Stress Flush</name>
 
 <gap:platform name="ios" />
 <gap:platform name="android" />
