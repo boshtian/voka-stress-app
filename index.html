@@ -10,18 +10,19 @@
 <script src="scripts/jquery.knob.js"></script>
 <script src="scripts/jquery-ui.min.js"></script>
 <script src="scripts/jquery.ui.touch-punch.js"></script>
-<script src="js/plugins/SocialSharing.js"></script>
+<!--<script src="js/plugins/SocialSharing.js"></script>-->
 
 <script type="text/javascript" charset="utf-8">
 	
 	// event listeners
 	document.addEventListener("deviceready", onDeviceReady, false);
 	
-/*
+	/*
 	$(document).ready(function(e) {
     onDeviceReady();
   });
-*/
+	*/
+
 	function onDeviceReady() {
 		//document.addEventListener("online", onOnline, false);
 		
@@ -124,7 +125,7 @@
 		}
 		
 		function musicSeekTo(value){
-			mDuration = appMusic.getDuration()
+			mDuration = appMusic.getDuration();
 			var musicTime = ((mDuration * (100-value)) / 100) * 1000;
 			appMusic.seekTo(musicTime);
 			updateTimer(appMusic);
