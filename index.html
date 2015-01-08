@@ -5,7 +5,7 @@
 <title>Stress Flush</title>
 <link rel="stylesheet" href="css/style.css" />
 
-<script src="cordova.js"></script>
+<!--<script src="cordova.js"></script>-->
 <script src="scripts/jquery.min.js"></script>
 <script src="scripts/jquery.knob.js"></script>
 <script src="scripts/jquery-ui.min.js"></script>
@@ -24,7 +24,7 @@
 	*/
 
 	function onDeviceReady() {
-		//document.addEventListener("online", onOnline, false);
+		document.addEventListener("online", onOnline, false);
 		
 		document.addEventListener("resume", onResume, false);
 		
@@ -109,6 +109,7 @@
 		var appMusic;
 		
 		// Create Media object from src
+		/*
 		if (device.platform == "Android") {
 			appMusic = new Media("/android_asset/www/music/stress_app_music.mp3", musicSuccess, musicError);
 		} else {
@@ -148,7 +149,7 @@
 				// allow device to sleep
 				window.plugins.powerManagement.release();
 			}
-		});
+		});*/
 		
 		/* Buttons actions */
 		$("a.btn-again").on('touchstart', function(){
